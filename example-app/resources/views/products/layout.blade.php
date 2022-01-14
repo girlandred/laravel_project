@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    {{-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Training</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -55,12 +55,20 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    <div class="container">
+    </nav> --}}
 
-        <br>
-        @yield('content')
-    </div>
+    <x-app-layout>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            </h2>
+        </x-slot>
+        <div class="container">
+
+            <br>
+            @yield('content')
+        </div>
+
+    </x-app-layout>
 
 </body>
 
