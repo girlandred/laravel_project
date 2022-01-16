@@ -15,7 +15,7 @@
 
     <form action="{{ route('products.update', $product->id) }}" method="POST">
         @csrf
-        @method('PUT')
+        @method('PATCH')
 
         <div class="row">
             <div class="content col-12">

@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::where('user_id', auth()->user()->id)->paginate(5);
 
         return view(('products.index'), compact('products'))->with(request()->input('page'));
     }
@@ -44,8 +44,15 @@ class ProductController extends Controller
             'country' => 'required',
             'quantity' => 'required'
         ]);
-
-        Product::create($request->all());
+        Product::create(
+            [
+                'title' => $request->input('title'),
+                'vendor' => $request->input('vendor'),
+                'country' => $request->input('country'),
+                'quantity' => $request->input('quantity'),
+                'user_id' => auth()->user()->id
+            ]
+        );
 
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
@@ -88,7 +95,14 @@ class ProductController extends Controller
             'quantity' => 'required'
         ]);
 
-        $product->update($request->all());
+        $product->update([
+            'title' => $request->input('title'),
+            'vendor' => $request->input('vendor'),
+            'country' => $request->input('country'),
+            'quantity' => $request->input('quantity'),
+            'user_id' => auth()->user()->id
+
+        ]);
 
         return redirect()->route('products.index')
             ->with('success', 'Product updated successfully');

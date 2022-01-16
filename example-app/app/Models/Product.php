@@ -13,7 +13,11 @@ class Product extends Model
         'title',
         'vendor',
         'country',
-        'quantity'
+        'quantity',
+        'user_id'
     ];
-    
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

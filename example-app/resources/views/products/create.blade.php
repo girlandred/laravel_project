@@ -5,9 +5,6 @@
 
         <div class="row">
             <div class="content col-12">
-                {{-- <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div> --}}
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
