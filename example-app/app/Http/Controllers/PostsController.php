@@ -55,7 +55,7 @@ class PostsController extends Controller
         ]);
 
         return redirect('/posts')
-            ->with('message', 'Your post has been added!');
+            ->with('success', 'Your post has been added!');
     }
 
     /**
