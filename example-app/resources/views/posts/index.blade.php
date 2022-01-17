@@ -38,10 +38,11 @@
                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-
-                                    <button class="btn btn-primary" type="submit">
-                                        Delete
-                                    </button>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                                        <button class="btn btn-primary" type="submit">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </form>
                             </span>
                         @endif

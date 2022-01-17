@@ -20,8 +20,6 @@
                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="row">
-                        <div class="content col-12">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" id="title" class="text-input form-control">
