@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action="{{ route('products.update', $product->id) }}" method="POST">
+    {{-- <form action="{{ route('products.update', $product->id) }}" method="POST">
         @csrf
         @method('PATCH')
 
@@ -43,5 +43,5 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
 
-    </form>
+    </form> --}}
 @endsection

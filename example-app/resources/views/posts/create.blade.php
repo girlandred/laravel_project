@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('products.store') }}" method="POST">
+                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -27,21 +27,26 @@
                                 <input type="text" name="title" id="title" class="text-input form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="vendor" class="form-label">Vendor</label>
-                                <input type="text" name="vendor" id="vendor" class="text-input form-control">
+                                <label for="content" class="form-label">Content</label>
+                                <input type="text" name="content" id="content" class="text-input form-control">
                             </div>
-                            <div class="mb-3">
-                                <label for="country" class="form-label">Country</label>
-                                <input type="text" name="country" id="country" class="text-input form-control">
+
+
+                            <div class="bg-grey-lighter pt-15">
+                                <label
+                                    class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg tracking-wide uppercase border border-blue cursor-pointer">
+                                    <span class="mt-2 text-base leading-normal">
+                                        Select a file
+                                    </span>
+                                    <input type="file" name="image" class="hidden">
+                                </label>
                             </div>
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">Quantity</label>
-                                <input type="text" name="quantity" id="quantity" class="text-input form-control">
-                            </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
+
                 </form>
             </div>
         </div>
