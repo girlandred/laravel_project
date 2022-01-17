@@ -40,7 +40,7 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg'
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
@@ -100,8 +100,8 @@ class PostsController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('posts.index')
-            ->with('message', 'Your post has been updated!');
+        return redirect()->route('posts.index')
+            ->with('success', 'Your post has been updated!');
     }
 
     /**

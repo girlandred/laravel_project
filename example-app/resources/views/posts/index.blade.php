@@ -26,10 +26,6 @@
                                 {{ date('jS M Y', strtotime($post->updated_at)) }}
                             </span>
 
-                            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-                                {{ $post->content }}
-                            </p>
-
                             <a href="{{ route('posts.show', $post->id) }}"
                                 class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                                 Keep Reading
@@ -44,11 +40,11 @@
                                 </span>
 
                                 <span class="float-right">
-                                    <form action="/posts" method="POST">
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('delete')
 
-                                        <button type="submit" class="btn btn-primary">
+                                        <button class="btn btn-primary" type="submit">
                                             Delete
                                         </button>
                                     </form>

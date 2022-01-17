@@ -13,35 +13,24 @@
         </div>
     @endif
 
-    {{-- <form action="{{ route('products.update', $product->id) }}" method="POST">
-        @csrf
-        @method('PATCH')
+    <div class="w-4/5 m-auto pt-20">
+        <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PATCH')
 
-        <div class="row">
-            <div class="content col-12">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" id="title" value="{{ $product->title }}"
-                        class="text-input form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="vendor" class="form-label">Vendor</label>
-                    <input type="text" name="vendor" id="vendor" value="{{ $product->vendor }}"
-                        class="text-input form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" name="country" id="country" value="{{ $product->country }}"
-                        class="text-input form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="quantity" class="form-label">Quantity</label>
-                    <input type="text" name="quantity" id="quantity" value="{{ $product->quantity }}"
-                        class="text-input form-control">
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" value="{{ $post->title }}" class="text-input form-control">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea type="text" name="content" id="content"
+                    class="text-input form-control">{{ $post->content }}</textarea>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 
-    </form> --}}
 @endsection

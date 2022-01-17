@@ -28,7 +28,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="content" class="form-label">Content</label>
-                                <input type="text" name="content" id="content" class="text-input form-control">
+                                <textarea type="text" name="content" id="content" class="text-input form-control"></textarea>
                             </div>
 
 
