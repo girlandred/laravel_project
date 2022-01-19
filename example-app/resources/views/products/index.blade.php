@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
     <div class="row">
         <div class="content col-12">
             @if ($message = Session::get('success'))

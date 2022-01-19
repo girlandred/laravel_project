@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('/{product}', [ProductController::class, 'update'])->name('.update');
         Route::delete('/{product}', [ProductController::class, 'destroy'])->name('.destroy');
         Route::get('/{product}', [ProductController::class, 'show'])->name('.show');
-
     });
+
 
     Route::group(['prefix' => 'posts', 'as' => 'posts'], function () {
         Route::get('', [PostsController::class, 'index'])->name('.index');
@@ -39,7 +41,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('/{post}', [PostsController::class, 'update'])->name('.update');
         Route::delete('/{post}', [PostsController::class, 'destroy'])->name('.destroy');
         Route::get('/{post}', [PostsController::class, 'show'])->name('.show');
+    });
 
+    Route::group(['prefix' => 'galleries', 'as' => 'galleries'], function () {
+        Route::get('', [GalleryController::class, 'index'])->name('.index');
+        Route::post('', [GalleryController::class, 'store'])->name('.store');
     });
 });
 
