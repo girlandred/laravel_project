@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Models\Gallery;
 use Image;
+use Response;
+
 
 class GalleryController extends Controller
 {
@@ -16,18 +19,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::where('user_id', auth()->user()->id)->paginate(6);
-        return view(('galleries.index'), compact('galleries'))->with(request()->input('page'));
+        $galleries = Gallery::orderBy('id', 'DESC')->paginate(5);
+        return view('galleries.index')->with(compact('galleries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +32,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
 
@@ -54,13 +49,13 @@ class GalleryController extends Controller
 
             $file->move(public_path('image'), $image_name);
         }
-        Gallery::create([
+
+        $galleries = Gallery::create([
             'title' => $request->input('title'),
             'image_path' => $image_name,
             'user_id' => auth()->user()->id
         ]);
 
-        return back()->with('success', 'Your image has been added!');
+        return Response::json($galleries);
     }
-
 }

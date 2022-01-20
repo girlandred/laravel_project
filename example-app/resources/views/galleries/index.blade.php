@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label> Select a file</label>
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" name="image" id="image" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -91,39 +91,6 @@
             </div>
         </div>
 
-
         {{ $galleries->links() }}
 
-
-
-    @endsection
-    @section('scripts')
-        <script>
-            $(document).ready(function() {
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $(document).on('#submit', '#img_upload', function(e) {
-                    e.preventDefault();
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '{{ route('galleries.index') }}',
-                        contentType: false,
-                        proccessData: false,
-
-                        success: function(response) {
-                            $('#img_upload').find('input').val('');
-                            $('#demo').modal('hide');
-                            alert("Success");
-                            window.location.reload();
-                        }
-                    });
-                });
-            });
-        </script>
     @endsection
