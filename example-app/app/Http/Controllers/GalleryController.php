@@ -54,60 +54,13 @@ class GalleryController extends Controller
 
             $file->move(public_path('image'), $image_name);
         }
-
         Gallery::create([
             'title' => $request->input('title'),
             'image_path' => $image_name,
             'user_id' => auth()->user()->id
         ]);
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Your image has been added!'
-        ]);
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return back()->with('success', 'Your image has been added!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

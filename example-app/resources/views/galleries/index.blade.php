@@ -2,6 +2,37 @@
 
 @section('content')
 
+    <div class="modal fade" id="demo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form method="POST" id="img_upload" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+                        @csrf
+                        <div class="form-group mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" name="title" id="title" class="text-input form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label> Select a file</label>
+                            <input type="file" name="image" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -15,44 +46,19 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="content col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
 
-                                <button data-bs-toggle="collapse" class="btn btn-primary" data-bs-target="#demo"> Add
+                                <button data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#demo"> Add
                                     Image</button>
-
-                                <div id="demo" class="collapse">
-                                    <form action="{{ route('galleries.store') }}" method="POST" id="img_upload"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group">
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label">Title</label>
-                                                <input type="text" name="title" id="title" class="text-input form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="bg-grey-lighter pt-15">
-                                                <label
-                                                    class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg tracking-wide uppercase border border-blue cursor-pointer">
-                                                    <span class="mt-2 text-base leading-normal">
-                                                        Select a file
-                                                    </span>
-                                                    <input type="file" name="image" class="hidden">
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -86,37 +92,38 @@
         </div>
 
 
-
         {{ $galleries->links() }}
 
 
 
     @endsection
-    @section('scripts') 
-    <script>
-        $(document).ready(function() {
+    @section('scripts')
+        <script>
+            $(document).ready(function() {
 
-            $(document).on('submit', '#img_upload', function(e){
-                e.preventDefault();
-
-                let formData = new FormData($('#img_upload')[0]);
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/galleries',
-                    data: formData,
-                    contentType: false,
-                    proccessData: false,
-
-                    success: function(response){
-                        if(response.status ==200){
-                            
-                        }
-
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            });
-        });
 
-    </script>
+                $(document).on('#submit', '#img_upload', function(e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('galleries.index') }}',
+                        contentType: false,
+                        proccessData: false,
+
+                        success: function(response) {
+                            $('#img_upload').find('input').val('');
+                            $('#demo').modal('hide');
+                            alert("Success");
+                            window.location.reload();
+                        }
+                    });
+                });
+            });
+        </script>
     @endsection
