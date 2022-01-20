@@ -19,7 +19,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::orderBy('id', 'DESC')->paginate(5);
+        $galleries = Gallery::orderBy('id', 'DESC')->paginate(9);
         return view('galleries.index')->with(compact('galleries'));
     }
 

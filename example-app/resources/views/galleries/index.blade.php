@@ -46,11 +46,11 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="content col-12">
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif
+                    @if ($message = Session::get('success'))
+                        <div id="alert" class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                 <div class="card">
 
                     <div class="card-body">
