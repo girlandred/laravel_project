@@ -20,8 +20,6 @@
                         <div class="row">
                             <div class="col-md-12">
 
-
-
                                 <button data-bs-toggle="collapse" class="btn btn-primary" data-bs-target="#demo"> Add
                                     Image</button>
 
@@ -48,7 +46,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
@@ -67,11 +64,12 @@
                                     <a href="{{ asset('image/' . $gallery->image_path) }}" class="fancybox"
                                         data-title="{{ $gallery->title }}" data-id="{{ $gallery->id }}"
                                         data-fancybox="all">
-                                        <img src="{{ asset('images/' . $gallery->image_path) }}" height="100%" width="100%" alt="">
-                                    <h2 class="text-gray-700 font-bold text-5xl pb-4">
-                                        {{ $gallery->title }}
-                                    </h2>
-                                </a>
+                                        <img src="{{ asset('images/' . $gallery->image_path) }}" height="100%"
+                                            width="100%" alt="">
+                                        <h2 class="text-gray-700 font-bold text-5xl pb-4">
+                                            {{ $gallery->title }}
+                                        </h2>
+                                    </a>
 
 
                                 </figure>
@@ -93,4 +91,32 @@
 
 
 
+    @endsection
+    @section('scripts') 
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('submit', '#img_upload', function(e){
+                e.preventDefault();
+
+                let formData = new FormData($('#img_upload')[0]);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/galleries',
+                    data: formData,
+                    contentType: false,
+                    proccessData: false,
+
+                    success: function(response){
+                        if(response.status ==200){
+                            
+                        }
+
+                    }
+                });
+            });
+        });
+
+    </script>
     @endsection

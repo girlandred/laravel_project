@@ -61,8 +61,10 @@ class GalleryController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect()->back()
-            ->with('success', 'Your post has been added!');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Your image has been added!'
+        ]);
     }
     /**
      * Display the specified resource.
