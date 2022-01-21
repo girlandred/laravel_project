@@ -43,10 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{post}', [PostsController::class, 'show'])->name('.show');
     });
 
-    Route::group(['prefix' => 'galleries', 'as' => 'galleries'], function () {
-        Route::get('', [GalleryController::class, 'index'])->name('.index');
-        Route::post('', [GalleryController::class, 'store'])->name('.store');
-    });
+    Route::get('/galleries', [GalleryController::class, 'index']);
+    Route::post('/galleries', [GalleryController::class, 'store']);
+    Route::get('/fetch-data', [GalleryController::class, 'fetchData']);
 });
 
 require __DIR__ . '/auth.php';

@@ -19,8 +19,16 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::orderBy('id', 'DESC')->paginate(9);
-        return view('galleries.index')->with(compact('galleries'));
+        return view('galleries.index');
+    }
+
+
+    public function fetchData()
+    {
+        $galleries = Gallery::all();
+        return Response::json([
+            'galleries' => $galleries,
+        ]);
     }
 
 
@@ -32,7 +40,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $galleries = $request->validate([
             'title' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
 
@@ -56,6 +64,9 @@ class GalleryController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return Response::json($galleries);
+        return Response::json([
+            'status' => 200,
+            'message' => 'success',
+        ]);
     }
 }

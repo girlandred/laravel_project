@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <ul class="grid">
-                        @foreach ($galleries as $gallery)
+                        {{-- @foreach ($galleries as $gallery)
                             <li>
 
                                 <figure class="grid__figure">
@@ -81,7 +81,7 @@
                                 </figure>
                             </li>
 
-                        @endforeach
+                        @endforeach --}}
 
 
                     </ul>
@@ -91,6 +91,6 @@
             </div>
         </div>
 
-        {{ $galleries->links() }}
+        {{-- {{ $galleries->links() }} --}}
 
     @endsection
