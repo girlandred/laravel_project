@@ -5,6 +5,7 @@ $(document).ready(function() {
         }
     });
 
+
     fetchData();
 
     function fetchData() {
@@ -39,7 +40,6 @@ $(document).ready(function() {
             success: function(response) {
                 // jQuery('#img_upload').trigger("reset");
                 jQuery('#img_upload').find('input').val('');
-
                 jQuery('#demo').modal('hide');
                 fetchData();
 
