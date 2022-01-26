@@ -48,22 +48,22 @@ Route::group([
     });
 });
 
-// Route::group([
-//     'middleware' => ['auth', 'verified']
-// ], function () {
-//     Route::group(['prefix' => 'posts', 'as' => 'posts'], function () {
-//         Route::get('', [PostsController::class, 'index'])->name('.index');
-//         Route::get('/create', [PostsController::class, 'create'])->name('.create');
-//         Route::post('', [PostsController::class, 'store'])->name('.store');
-//         Route::get('/{post}/edit', [PostsController::class, 'edit'])->name('.edit');
-//         Route::patch('/{post}', [PostsController::class, 'update'])->name('.update');
-//         Route::delete('/{post}', [PostsController::class, 'destroy'])->name('.destroy');
-//         Route::get('/{post}', [PostsController::class, 'show'])->name('.show');
-//     });
+Route::group([
+    'middleware' => ['auth', 'verified']
+], function () {
+    Route::group(['prefix' => 'posts', 'as' => 'posts'], function () {
+        Route::get('', [PostsController::class, 'index'])->name('.index');
+        Route::get('/create', [PostsController::class, 'create'])->name('.create');
+        Route::post('', [PostsController::class, 'store'])->name('.store');
+        Route::get('/{post}/edit', [PostsController::class, 'edit'])->name('.edit');
+        Route::patch('/{post}', [PostsController::class, 'update'])->name('.update');
+        Route::delete('/{post}', [PostsController::class, 'destroy'])->name('.destroy');
+        Route::get('/{post}', [PostsController::class, 'show'])->name('.show');
+    });
 
-//     Route::get('/galleries', [GalleryController::class, 'index']);
-//     Route::post('/galleries', [GalleryController::class, 'store']);
-//     Route::get('/fetch-data', [GalleryController::class, 'fetchData']);
-// });
+    Route::get('/galleries', [GalleryController::class, 'index']);
+    Route::post('/galleries', [GalleryController::class, 'store']);
+    Route::get('/fetch-data', [GalleryController::class, 'fetchData']);
+});
 
 require __DIR__ . '/auth.php';
