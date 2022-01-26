@@ -29,9 +29,12 @@
                             <td>{{ $product->quantity }}</td>
 
                             <td>
-                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('products.show', $product->id) }}">Show</a>
-                                    <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Edit</a>
+                                <form action="{{ route('products.destroy',[app()->getLocale(), $product->id]) }}"
+                                    method="POST">
+                                    <a class="btn btn-primary"
+                                        href="{{ route('products.show', [app()->getLocale(), $product->id]) }}">Show</a>
+                                    <a class="btn btn-primary"
+                                        href="{{ route('products.edit', [app()->getLocale(), $product->id]) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-primary">Delete</button>

@@ -54,7 +54,7 @@ class ProductController extends Controller
             ]
         );
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully');
+        return redirect()->route('products.index', app()->getLocale())->with('success', 'Product created successfully');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('products.show');
     }
 
     /**
@@ -76,7 +76,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        return view('products.edit');
     }
 
     /**
@@ -104,7 +104,7 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect()->route('products.index')
+        return redirect()->route('products.index', app()->getLocale())
             ->with('success', 'Product updated successfully');
     }
 
@@ -114,11 +114,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request,Product $product)
     {
         $product->delete();
 
-        return redirect()->route('products.index')
+        return redirect()->route('products.index', app()->getLocale())
             ->with('success', 'Product deleted successfully');
     }
 }

@@ -15,7 +15,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('products.store') }}" method="POST">
+                <form action="{{ route('products.store', app()->getLocale()) }}" method="POST">
                     @csrf
 
                     <div class="row">
