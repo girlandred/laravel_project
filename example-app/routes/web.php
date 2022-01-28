@@ -24,29 +24,42 @@ Route::get('/', function () {
 
 Route::group([
     'prefix' => '{locale}',
-    'where' => ['locale' => '[a-zA-Z]{2}'],
-    'middleware' => ['setlocale']
+    'where' => ['locale' => '[a-zA-Z]{2}']
 ], function () {
-
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     Route::group([
         'middleware' => ['auth', 'verified']
     ], function () {
 
-        Route::group(['prefix' => 'products/', 'as' => 'products'], function () {
-            Route::get('/', [ProductController::class, 'index'])->name('.index');
-            Route::get('/create', [ProductController::class, 'create'])->name('.create');
-            Route::post('', [ProductController::class, 'store'])->name('.store');
-            Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('.edit');
-            Route::patch('/{product}', [ProductController::class, 'update'])->name('.update');
-            Route::delete('/{product}', [ProductController::class, 'destroy'])->name('.destroy');
-            Route::get('/{product}', [ProductController::class, 'show'])->name('.show');
-        });
+
+        // Route::get('/', function () {
+        //     return view('welcome');
+        // });
+
+        Route::resource('products', ProductController::class);
+        Route::get('/', [ProductController::class, 'index'])->name('.index');
+        Route::get('/create', [ProductController::class, 'create'])->name('.create');
+        Route::post('', [ProductController::class, 'store'])->name('.store');
+
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('.edit');
+        Route::patch('/{product}', [ProductController::class, 'update'])->name('.update');
+        Route::delete('/{product}', [ProductController::class, 'destroy'])->name('.destroy');
+        Route::get('/{product}', [ProductController::class, 'show'])->name('.show');
     });
 });
+
+
+
+// Route::prefix('{locale}')->group(function () {
+//     Route::prefix('products')->name('products.')->middleware('auth', 'verified')->group(function () {
+//         Route::get('/', [ProductController::class, 'index'])->name('index');
+//         Route::get('/create', [ProductController::class, 'create'])->name('create');
+//         Route::post('', [ProductController::class, 'store'])->name('store');
+//         Route::get('{product}/', [ProductController::class, 'show'])->name('show');
+//         Route::patch('/{id}', [ProductController::class, 'update'])->name('update');
+//         Route::delete('/{id}', [ProductController::class, 'destroy'])->name('destroy');
+//         Route::get('/edit', [ProductController::class, 'edit'])->name('edit');
+//     });
+// });
 
 Route::group([
     'middleware' => ['auth', 'verified']

@@ -5,19 +5,19 @@
         <div class="content col-12">
             <div class="mb-3">
                 <strong>Title:</strong>
-                {{ $product->title }}
+                {{ $product ->title }}
             </div>
             <div class="mb-3">
                 <strong>Vendor:</strong>
-                {{ $product->vendor }}
+                {{ $product ->vendor }}
             </div>
             <div class="mb-3">
                 <strong>Country:</strong>
-                {{ $product->country }}
+                {{ $product ->country }}
             </div>
             <div class="mb-3">
                 <strong>Quantity:</strong>
-                {{ $product->quantity }}
+                {{ $product ->quantity }}
             </div>
         </div>
 

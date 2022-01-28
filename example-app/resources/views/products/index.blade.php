@@ -32,12 +32,12 @@
                                 <form action="{{ route('products.destroy',[app()->getLocale(), $product->id]) }}"
                                     method="POST">
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.show', [app()->getLocale(), $product->id]) }}">Show</a>
+                                        href="{{ route('products.show', [app()->getLocale(), $product->id]) }}">{{ __('Show') }}</a>
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.edit', [app()->getLocale(), $product->id]) }}">Edit</a>
+                                        href="{{ route('products.edit', [app()->getLocale(), $product->id]) }}">{{ __('Edit') }}</a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Delete') }}</button>
                                 </form>
                             </td>
                         </tr>
