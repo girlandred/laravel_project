@@ -12,10 +12,10 @@
             <table class="table table-bordered">
                 <thead>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Vendor</th>
-                    <th>Country</th>
-                    <th>Quantity</th>
+                    <th>{{ __('main.title') }}</th>
+                    <th>{{ __('main.vendor') }}</th>
+                    <th>@lang('main.country')</th>
+                    <th>@lang('main.quantity')</th>
                     <th width="280px">Action</th>
                 </thead>
                 <tbody>
@@ -29,12 +29,11 @@
                             <td>{{ $product->quantity }}</td>
 
                             <td>
-                                <form action="{{ route('products.destroy',[app()->getLocale(), $product->id]) }}"
-                                    method="POST">
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.show', [app()->getLocale(), $product->id]) }}">{{ __('Show') }}</a>
+                                        href="{{ route('products.show', $product->id) }}">{{ __('Show') }}</a>
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.edit', [app()->getLocale(), $product->id]) }}">{{ __('Edit') }}</a>
+                                        href="{{ route('products.edit', $product->id) }}">{{ __('Edit') }}</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-primary">{{ __('Delete') }}</button>

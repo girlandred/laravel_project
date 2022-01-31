@@ -411,18 +411,22 @@
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <a href="{{ route('locale', __('main.set_lang')) }}"
+                    class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    {{ __('Change locale') }}</a>
+                    
                 @auth
-                    <a href="{{ route('products.index', app()->getLocale()) }}"
+                    <a href="{{ route('products.index') }}"
                         class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Products') }}</a>
 
-                    <a href="{{ route('posts.index', app()->getLocale()) }}"
+                    <a href="{{ route('posts.index') }}"
                         class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Posts') }}</a>
                 @else
-                    <a href="{{ route('login', app()->getLocale()) }}"
+                    <a href="{{ route('login') }}"
                         class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Log in') }}</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register', app()->getLocale()) }}"
+                        <a href="{{ route('register') }}"
                             class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Register') }}</a>
                     @endif
                 @endauth

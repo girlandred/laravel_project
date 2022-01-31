@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'uk',
 
     /*
     |--------------------------------------------------------------------------
@@ -232,10 +232,4 @@ return [
         'Image' => Intervention\Image\Facades\Image::class
 
     ],
-
-    'languages' => [
-        'en' => 'English',
-        'uk' => 'Ukrainian',
-    ],
-
 ];

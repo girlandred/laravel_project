@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action="{{ route('products.update', [app()->getLocale(), $product->id]) }}" method="POST">
+    <form action="{{ route('products.update', $product->id) }}" method="POST">
         @csrf
         @method('PATCH')
 
