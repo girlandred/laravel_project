@@ -14,9 +14,9 @@
                     <th>#</th>
                     <th>{{ __('main.title') }}</th>
                     <th>{{ __('main.vendor') }}</th>
-                    <th>@lang('main.country')</th>
-                    <th>@lang('main.quantity')</th>
-                    <th width="280px">Action</th>
+                    <th>{{ __('main.country') }}</th>
+                    <th>{{ __('main.quantity') }}</th>
+                    <th width="280px">{{ __('main.action') }}</th>
                 </thead>
                 <tbody>
 
@@ -31,12 +31,12 @@
                             <td>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.show', $product->id) }}">{{ __('Show') }}</a>
+                                        href="{{ route('products.show', $product->id) }}">{{ __('main.show') }}</a>
                                     <a class="btn btn-primary"
-                                        href="{{ route('products.edit', $product->id) }}">{{ __('Edit') }}</a>
+                                        href="{{ route('products.edit', $product->id) }}">{{ __('main.edit') }}</a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-primary">{{ __('Delete') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
                                 </form>
                             </td>
                         </tr>

@@ -66,7 +66,7 @@ class GalleryController extends Controller
 
         return Response::json([
             'status' => 200,
-            'message' => 'success',
+            'message' => __('main.success'),
         ]);
     }
 }

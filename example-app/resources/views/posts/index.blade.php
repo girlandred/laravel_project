@@ -20,18 +20,18 @@
                             </h2>
 
                             <span class="text-gray-500">
-                                By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on
+                                {{ __('main.owner') }} <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>{{ __('main.created_at') }}
                                 {{ date('jS M Y', strtotime($post->updated_at)) }}
                             </span>
 
                             <a href="{{ route('posts.show', $post->id) }}"
-                                class="text-gray-700 italic hover:text-gray-900">Show </a>
+                                class="text-gray-700 italic hover:text-gray-900">{{ __('main.show') }}</a>
 
                             @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                                 <span class="float-right">
                                     <a href="{{ route('posts.edit', $post->id) }}"
                                         class=" text-gray-700 italic hover:text-gray-900">
-                                        Edit
+                                        {{ __('main.edit') }}
                                     </a>
                                 </span>
 
@@ -41,7 +41,7 @@
                                         @method('delete')
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                                             <button class="btn btn-primary" type="submit">
-                                                Delete
+                                                {{ __('main.delete') }}
                                             </button>
                                         </div>
                                     </form>

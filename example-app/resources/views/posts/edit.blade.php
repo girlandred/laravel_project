@@ -5,12 +5,12 @@
         <div class="content col-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
+                    {{ __('main.problems_with_input') }}
+                    {{-- <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
-                    </ul>
+                    </ul> --}}
                 </div>
             @endif
 
@@ -20,17 +20,17 @@
                     @method('PATCH')
 
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
+                        <label for="title" class="form-label">{{ __('main.title') }}</label>
                         <input type="text" name="title" id="title" value="{{ $post->title }}"
                             class="text-input form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
+                        <label for="content" class="form-label">{{ __('main.content') }}</label>
                         <textarea type="text" name="content" id="content"
                             class="text-input form-control">{{ $post->content }}</textarea>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{ __('main.submit') }}</button>
                     </div>
                 </form>
             </div>

@@ -6,7 +6,7 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    {{ __('main.problems_with_input') }}
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -18,12 +18,14 @@
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
+                    <label for="title" class="form-label"> {{ __('main.title') }}
+                    </label>
                     <input type="text" name="title" id="title" class="text-input form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="content" class="form-label">Content</label>
+                    <label for="content" class="form-label"> {{ __('main.content') }}
+                    </label>
                     <textarea type="text" name="content" id="content" class="text-input form-control"></textarea>
                 </div>
 
@@ -32,14 +34,14 @@
                     <label
                         class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg tracking-wide uppercase border border-blue cursor-pointer">
                         <span class="mt-2 text-base leading-normal">
-                            Select a file
+                            {{ __('main.select') }}
                         </span>
                         <input type="file" name="image" class="hidden">
                     </label>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"> {{ __('main.submit') }} </button>
                 </div>
 
             </form>

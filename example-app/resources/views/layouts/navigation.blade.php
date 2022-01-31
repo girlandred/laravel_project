@@ -12,32 +12,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('products.index') }}"
-                        :active="request()->routeIs('products.index')">
+                    <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         {{ __('main.home') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('locale', __('main.set_lang')) }}">
-                        {{ __('Change locale') }}
+                    <x-nav-link href="/galleries">
+                        {{ __('main.galleries') }}
                     </x-nav-link>
                 </div>
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.index')">
-                        {{ __('Gallery') }}
-                    </x-nav-link>
-                </div> --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('products.create') }}"
-                        :active="request()->routeIs('products.create')">
-                        {{ __('Create Product') }}
+                    <x-nav-link href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
+                        {{ __('main.create_products') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('posts.create') }}"
-                        :active="request()->routeIs('posts.create')">
-                        {{ __('Create Post') }}
+                    <x-nav-link href="{{ route('posts.create') }}" :active="request()->routeIs('posts.create')">
+                        {{ __('main.create_posts') }}
                     </x-nav-link>
                 </div>
 
@@ -61,17 +53,19 @@
                             </div>
                         </button>
 
-
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link href="{{ route('locale', __('main.set_lang')) }}">
+                            {{ __('main.change_locale') }}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('main.logout') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -99,25 +93,23 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('products.index') }}"
                 :active="request()->routeIs('products.index')">
-                {{ __('See Products') }}
+                {{ __('main.see_products') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('products.create') }}"
                 :active="request()->routeIs('products.create')">
-                {{ __('Create Product') }}
+                {{ __('main.create_products') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('posts.index') }}"
-                :active="request()->routeIs('posts.index')">
-                {{ __('See Posts') }}
+            <x-responsive-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                {{ __('main.see_posts') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('posts.create') }}"
-                :active="request()->routeIs('posts.create')">
-                {{ __('Create Post') }}
+            <x-responsive-nav-link href="{{ route('posts.create') }}" :active="request()->routeIs('posts.create')">
+                {{ __('main.create_posts') }}
             </x-responsive-nav-link>
         </div>
 
@@ -136,7 +128,7 @@
 
                     <x-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('main.logout') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

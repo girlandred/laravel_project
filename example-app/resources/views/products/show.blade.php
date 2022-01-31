@@ -4,19 +4,19 @@
     <div class="row">
         <div class="content col-12">
             <div class="mb-3">
-                <strong>{{ __('Title:') }}</strong>
+                <strong>{{ __('main.title') }}</strong>
                 {{ $product ->title }}
             </div>
             <div class="mb-3">
-                <strong>{{ __('Vendor:') }}</strong>
+                <strong>{{ __('main.vendor') }}</strong>
                 {{ $product ->vendor }}
             </div>
             <div class="mb-3">
-                <strong>{{ __('Country:') }}</strong>
+                <strong>{{ __('main.country') }}</strong>
                 {{ $product ->country }}
             </div>
             <div class="mb-3">
-                <strong>{{ __('Quantity:') }}</strong>
+                <strong>{{ __('main.quantity') }}</strong>
                 {{ $product ->quantity }}
             </div>
         </div>

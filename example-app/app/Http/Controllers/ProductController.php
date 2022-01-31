@@ -54,7 +54,7 @@ class ProductController extends Controller
             ]
         );
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully');
+        return redirect()->route('products.index')->with('success', __('main.flash_product'));
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductController extends Controller
         ]);
 
         return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
+            ->with('success', __('main.flash_product_update'));
     }
 
     /**
@@ -119,6 +119,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully');
+            ->with('success', __('main.flash_product_delete'));
     }
 }

@@ -55,7 +55,7 @@ class PostsController extends Controller
         ]);
 
         return redirect('/posts')
-            ->with('success', 'Your post has been added!');
+            ->with('success', __('main.flash_post'));
     }
 
     /**
@@ -101,7 +101,7 @@ class PostsController extends Controller
         ]);
 
         return redirect()->route('posts.index')
-            ->with('success', 'Your post has been updated!');
+        ->with('success', __('main.flash_post_update'));
     }
 
     /**
@@ -115,6 +115,6 @@ class PostsController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')
-            ->with('success', 'Post deleted successfully');
+        ->with('success', __('main.flash_post_delete'));
     }
 }
