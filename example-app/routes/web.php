@@ -26,7 +26,7 @@ Route::middleware(['set_locale'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    
+
     Route::group([
         'middleware' => ['auth', 'verified']
     ], function () {
@@ -56,6 +56,6 @@ Route::middleware(['set_locale'])->group(function () {
         Route::post('/galleries', [GalleryController::class, 'store']);
         Route::get('/fetch-data', [GalleryController::class, 'fetchData']);
     });
-});
 
-require __DIR__ . '/auth.php';
+    require __DIR__ . '/auth.php';
+});

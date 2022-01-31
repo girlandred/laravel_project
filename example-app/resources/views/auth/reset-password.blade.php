@@ -17,21 +17,21 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('main.email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('main.pass')" />
 
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('main.password_confirmation')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                     type="password"
@@ -40,7 +40,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Reset Password') }}
+                    {{ __('main.reset_pass') }}
                 </x-button>
             </div>
         </form>

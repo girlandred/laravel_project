@@ -4,8 +4,9 @@ return [
     'add' => 'Add',
     'select' => 'Select a file',
     'close' => 'Close',
-    'submit' => 'Submit',
+    'confirm' => 'Confirm',
     'save' => 'Save',
+    'submit' => 'Submit',
 
     'problems_with_input' => 'There were some problems with your input.',
 
@@ -18,14 +19,12 @@ return [
     'see_posts' => 'See Posts',
     'galleries' => 'Gallery',
 
-
     'home' => 'Home',
     'title' => 'Title',
     'content' => 'Content',
     'vendor' => 'Vendor',
     'country' => 'Country',
     'quantity' => 'Quantity',
-    'pass' => 'Password',
     'set_lang' => 'uk',
 
     'owner' => 'By',
@@ -43,4 +42,27 @@ return [
     'flash_product' => 'Your product has been added!',
     'flash_product_update' => 'Your product has been updated!',
     'flash_product_delete' => 'Product deleted successfully!',
+
+    'pass' => 'Password',
+    'email' => 'Email',
+    'name' => 'Name',
+    'password_confirmation' => 'Confirm Password',
+
+    'remember_me' => 'Remember me',
+    'request' => 'Forgot your password?',
+
+    'forgot_pass' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
+    'reset_link' => 'Email Password Reset Link',
+    'reset_pass' => 'Reset Password',
+
+    'log_in' => 'Log in',
+    'already_register' => 'Already registered?',
+    'register' => 'Register',
+
+    'verification_link' => 'A new verification link has been sent to the email address you provided during registration.',
+    'verify' => 'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.',
+    'resend' => 'Resend Verification Email',
+
+    'secure' => 'This is a secure area of the application. Please confirm your password before continuing.',
+
 ];
