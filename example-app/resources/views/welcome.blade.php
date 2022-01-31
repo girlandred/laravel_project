@@ -410,21 +410,21 @@
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 <a href="{{ route('locale', __('main.set_lang')) }}"
                     class="text-sm text-gray-700 dark:text-gray-500 underline">
-                    {{ __('Change locale') }}</a>
-                    
+                    {{ __('main.change_locale') }}</a>
+
                 @auth
                     <a href="{{ route('products.index') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Products') }}</a>
+                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('main.see_products') }}</a>
 
                     <a href="{{ route('posts.index') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Posts') }}</a>
+                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('main.see_posts') }}</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Log in') }}</a>
+                        class="text-sm text-gray-700 dark:text-gray-500 underline">{{ __('main.log_in') }}</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Register') }}</a>
+                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('main.register') }}</a>
                     @endif
                 @endauth
             </div>
@@ -433,6 +433,7 @@
     </div>
     </div>
     </div>
+
 </body>
 
 </html>
