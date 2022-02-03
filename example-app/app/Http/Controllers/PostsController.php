@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Image;
 
 class PostsController extends Controller
 {
@@ -37,22 +38,48 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $posts = $request->validate([
             'title' => 'required',
             'content' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+
         ]);
 
-        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
 
-        $request->image->move(public_path('images'), $newImageName);
+            $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+            $path = public_path('images');
+            $resize = Image::make($file->getRealPath());
+            $resize->resize(300, 200, function ($const) {
+            })->save($path . '/' . $newImageName);
 
-        Post::create([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
-            'image_path' => $newImageName,
-            'user_id' => auth()->user()->id
+            $file->move(public_path('image'), $newImageName);
+        }
+
+        $posts = Post::create([
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'image_path' => $newImageName,
+                'user_id' => auth()->user()->id
         ]);
+
+        // $request->validate([
+        //     'title' => 'required',
+        //     'content' => 'required',
+        //     'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+        // ]);
+
+        // $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+
+        // $request->image->move(public_path('images'), $newImageName);
+
+        // Post::create([
+        //     'title' => $request->input('title'),
+        //     'content' => $request->input('content'),
+        //     'image_path' => $newImageName,
+        //     'user_id' => auth()->user()->id
+        // ]);
 
         return redirect('/posts')
             ->with('success', __('main.flash_post'));
@@ -101,7 +128,7 @@ class PostsController extends Controller
         ]);
 
         return redirect()->route('posts.index')
-        ->with('success', __('main.flash_post_update'));
+            ->with('success', __('main.flash_post_update'));
     }
 
     /**
@@ -115,6 +142,6 @@ class PostsController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')
-        ->with('success', __('main.flash_post_delete'));
+            ->with('success', __('main.flash_post_delete'));
     }
 }

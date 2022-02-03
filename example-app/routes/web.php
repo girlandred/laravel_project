@@ -23,10 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('locale/{locale}', [LanguageController::class, 'changeLocale'])->name('locale');
 Route::middleware(['set_locale'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
+    Route::get('', [PostsController::class, 'index'])->name('.index');
     Route::group([
         'middleware' => ['auth', 'verified']
     ], function () {

@@ -6,11 +6,11 @@
             @if ($errors->any())
                 <div class="alert alert-danger">
                     {{ __('main.problems_with_input') }}
-                    {{-- <ul>
+                    <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
-                    </ul> --}}
+                    </ul>
                 </div>
             @endif
 
